@@ -81,6 +81,9 @@
     <p>If any virus or harmful issue affects your mobile due to this download, <strong>Shakti Motors Haveri</strong> takes full responsibility.</p>
   </section>
 
+  <button class="phonepe" onclick="redirectToUPI('phonepe')">Pay via PhonePe</button>
+              <button class="paytm" onclick="redirectToUPI('paytm')">Pay via Paytm</button>
+            <button class="gpay" onclick="redirectToUPI('gpay')">Pay via Google Pay</button>
   <footer>
     
     <p>© 2025 Shakti Motors Haveri</p>
@@ -116,5 +119,24 @@ function openAdminSite() {
   }
 }
 </script>
+    <script>
+        function redirectToUPI(method) {
+            const amount = 500;
+            const upiId = "8431983269-2@upi"; // Replace with your UPI ID
+            const name = "Test";
+
+            let url = `upi://pay?pa=${upiId}&pn=${name}&am=${amount}&cu=INR`;
+
+            if (method === 'phonepe') {
+                window.location.href = `intent:${url}#Intent;package=com.phonepe.app;end`;
+            } else if (method === 'paytm') {
+                window.location.href = `intent:${url}#Intent;package=net.one97.paytm;end`;
+            } else if (method === 'gpay') {
+                window.location.href = `intent:${url}#Intent;package=com.google.android.apps.nbu.paisa.user;end`;
+            } else {
+                alert("Unsupported method");
+            }
+        }
+    </script>
 </body>
 </html>
